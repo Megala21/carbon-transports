@@ -34,6 +34,9 @@ public class JMSConstants {
         QUEUE, TOPIC
     }
 
+    /**
+     * JMS protocol
+     */
     public static final String PROTOCOL_JMS = "jms";
     /**
      * ID of the service, that this listener is bounded to
@@ -59,6 +62,21 @@ public class JMSConstants {
     public static final String SESSION_ACK = "transport.jms.SessionAcknowledgement";
 
     /**
+     * Acknowledgements to client
+     */
+    public static final String JMS_MESSAGE_DELIVERY_ERROR = "JMS_MESSAGE_DELIVERY_ERROR";
+    public static final String JMS_MESSAGE_DELIVERY_SUCCESS = "JMS_MESSAGE_DELIVERY_SUCCESS";
+    public static final String JMS_MESSAGE_DELIVERY_STATUS = "JMS_MESSAGE_DELIVERY_STATUS";
+
+    /**
+     * Acknowledge Modes
+     */
+    public static final String AUTO_ACKNOWLEDGE_MODE = "AUTO_ACKNOWLEDGE";
+    public static final String CLIENT_ACKNOWLEDGE_MODE = "CLIENT_ACKNOWLEDGE";
+    public static final String DUPS_OK_ACKNOWLEDGE_MODE = "DUPS_OK_ACKNOWLEDGE";
+    public static final String SESSION_TRANSACTED_MODE = "SESSION_TRANSACTED";
+
+    /**
      * Parameters from the user
      */
     public static final String CONNECTION_FACTORY_JNDI_PARAM_NAME = "ConnectionFactoryJNDIName";
@@ -66,6 +84,7 @@ public class JMSConstants {
     public static final String DESTINATION_PARAM_NAME = "Destination";
     public static final String NAMING_FACTORY_INITIAL_PARAM_NAME = "FactoryInitial";
     public static final String PROVIDER_URL_PARAM_NAME = "ProviderUrl";
+    public static final String SESSION_ACK_MODE_PARAM_NAME = "SessionAcknowledgement";
 
     /**
      * Namespace for JMS map payload representation
@@ -116,6 +135,7 @@ public class JMSConstants {
         MAPPING_PARAMETERS.put(DESTINATION_PARAM_NAME, DESTINATION_NAME);
         MAPPING_PARAMETERS.put(NAMING_FACTORY_INITIAL_PARAM_NAME, NAMING_FACTORY_INITIAL);
         MAPPING_PARAMETERS.put(PROVIDER_URL_PARAM_NAME, PROVIDER_URL);
+        MAPPING_PARAMETERS.put(SESSION_ACK_MODE_PARAM_NAME, SESSION_ACK);
     }
 
     /**

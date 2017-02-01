@@ -68,9 +68,11 @@ public class JMSTransportListener extends PollingTransportListener {
             if (connection != null) {
                 jmsConnectionFactory.start(connection);
                 session = jmsConnectionFactory.getSession(connection);
+                session.recover();
                 destination = jmsConnectionFactory.getDestination(session);
                 messageConsumer = jmsConnectionFactory.createMessageConsumer(session, destination);
-                messageConsumer.setMessageListener(new JMSMessageListener(carbonMessageProcessor, id));
+                messageConsumer.setMessageListener(
+                        new JMSMessageListener(carbonMessageProcessor, id, session.getAcknowledgeMode(), session));
             } else {
                 throw new RuntimeException("Cannot connect to the JMS Server. Check the connection and try again");
             }
@@ -109,11 +111,11 @@ public class JMSTransportListener extends PollingTransportListener {
 
     @Override
     protected void beginMaintenance() {
-
+        jmsConnectionFactory.stop(connection);
     }
 
     @Override
     protected void endMaintenance() {
-
+        jmsConnectionFactory.start(connection);
     }
 }

@@ -34,8 +34,6 @@ import javax.naming.NameNotFoundException;
 import javax.naming.NamingException;
 import javax.naming.Reference;
 
-
-
 /**
  * Maintain the common methods used by inbound JMS protocol
  */
@@ -130,6 +128,11 @@ public class JMSUtils {
         throw new NamingException(s);
     }
 
+    /**
+     * Change a jms message to carbon message
+     * @param message JMS message that need to be changed as carbon message
+     * @return the carbon message converted from jms message
+     */
     public static CarbonMessage createJMSCarbonMessage(Message message) {
         CarbonMessage jmsCarbonMessage = null;
         try {

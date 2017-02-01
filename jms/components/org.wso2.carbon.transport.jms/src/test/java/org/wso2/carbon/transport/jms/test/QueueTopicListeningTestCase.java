@@ -20,6 +20,7 @@ package org.wso2.carbon.transport.jms.test;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import org.wso2.carbon.transport.jms.listener.JMSTransportListener;
@@ -30,8 +31,6 @@ import org.wso2.carbon.transport.jms.utils.JMSConstants;
 
 import java.util.HashMap;
 import java.util.Map;
-
-import javax.jms.JMSException;
 
 /**
  * A test class for testing queue listening and topic listening
@@ -80,18 +79,28 @@ public class QueueTopicListeningTestCase {
 
     @Test(groups = "jmsListening", description = "Testing whether queue listening is working correctly without any "
             + "exceptions")
-    public void queueListeningTestCase() throws InterruptedException, JMSException {
-        jmsQueueTransportListener.poll(queueListeningParametes);
-        LOGGER.info("JMS Transport Listener is starting to listen to the queue " + JMSTestConstants.QUEUE_NAME);
-        jmsServer.publishMessagesToQueue();
+    public void queueListeningTestCase() {
+        try {
+            jmsQueueTransportListener.poll(queueListeningParametes);
+            LOGGER.info("JMS Transport Listener is starting to listen to the queue " + JMSTestConstants.QUEUE_NAME);
+            jmsServer.publishMessagesToQueue();
+            Thread.sleep(10000);
+        } catch (Exception e) {
+            Assert.fail("Error while listing to queue");
+        }
     }
 
     @Test(groups = "jmsListening", description = "Testing whether topic listening is working correctly without any "
             + "exceptions")
-    public void topicListeningTestCase() throws InterruptedException, JMSException {
-        jmsQueueTransportListener.poll(queueListeningParametes);
-        LOGGER.info("JMS Transport Listener is starting to listen to the topic " + JMSTestConstants.TOPIC_NAME);
-        jmsServer.publishMessagesToTopic();
+    public void topicListeningTestCase() {
+        try {
+            jmsQueueTransportListener.poll(queueListeningParametes);
+            LOGGER.info("JMS Transport Listener is starting to listen to the topic " + JMSTestConstants.TOPIC_NAME);
+            jmsServer.publishMessagesToTopic();
+            Thread.sleep(10000);
+        } catch (Exception e) {
+            Assert.fail("Error while listing to topic");
+        }
     }
 
 }
