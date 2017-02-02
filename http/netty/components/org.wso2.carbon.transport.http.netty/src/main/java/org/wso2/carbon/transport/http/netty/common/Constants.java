@@ -136,7 +136,11 @@ public final class Constants {
 
     public static final String APPLICATION_XML = "application/xml";
 
-    public static final String GZIP = "gzip";
+    public static final String CONTENT_ENCODING = "Content-Encoding";
+
+    public static final String ENCODING_GZIP = "gzip";
+
+    public static final String ENCODING_DEFLATE = "deflate";
 
     public static final String HTTP_CONTENT_LENGTH = "Content-Length";
 
@@ -148,13 +152,15 @@ public final class Constants {
 
     public static final String HTTP_SOAP_ACTION = "SOAPAction";
 
-    public static final String HTTP_CONTENT_ENCODING = "Accept-Encoding";
+    public static final String ACCEPT_ENCODING = "Accept-Encoding";
 
     public static final String HTTP_HOST = "Host";
 
     public static final String TRANSPORT_HEADERS = "TRANSPORT_HEADERS";
 
     public static final String HTTP_STATUS_CODE = "HTTP_STATUS_CODE";
+
+    public static final String HTTP_REASON_PHRASE = "HTTP_REASON_PHRASE";
 
     public static final String CHNL_HNDLR_CTX = "CHNL_HNDLR_CTX";
 
