@@ -32,6 +32,7 @@
         <module>server-connector-framework</module>
         <module>http</module>
         <module>features</module>
+        <module>jms</module>
     </modules>
 
     <scm>
